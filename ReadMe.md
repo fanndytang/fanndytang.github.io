@@ -287,7 +287,15 @@ response
 response
 ```javascript
 data: [
-   {id: '1', imgUrl: './static/img/goods.png', title: '宝宝生辰定制牌'}
+   {
+           id: '1', 
+           imgUrl: './static/img/goods.png', 
+           title: '宝宝生辰定制牌'
+           tag: [
+               {id: 1, name: '新品爆款', value: '#ff9933'}, 
+               {id: 2, name: '特价热卖', value: '#cc6666'},
+           ]
+   }
 ]
                         
 // 热卖专区，商品专区需要返回页码信息
@@ -332,8 +340,8 @@ response
             title: '宝宝生辰定制牌完美工艺创意可爱吊坠装饰吉祥款V3200B20',
             imgs: ['./static/img/g3.jpg',  './static/img/ad3.jpg'],        // 轮播图
             tag: [                                                         // 标签
-                {id: 1, title: '新品爆款', backColor: '#ff9933'}, 
-                {id: 1, title: '特价热卖', backColor: '#cc6666'},
+                {id: 1, name: '新品爆款', value: '#ff9933'}, 
+                {id: 1, name: '特价热卖', value: '#cc6666'},
                 ], 
             process: '<img style="width:100vw;display:block;" src="./static/img/d1.png" />',    //  定制流程
             rules: '<img style="width:100vw;display:block;" src="./static/img/d2.png" />',     //  规则说明
@@ -402,6 +410,45 @@ response
   ]
 }
 ```
+
+### 获取其它模板图标列表
+response
+```javascript
+data: [
+    {
+            title: '生肖图标',
+            list: [
+                  {url: "./static/img/sx/su.png", text: '老鼠'},
+                  {url: "./static/img/sx/niu.png", text: '牛'},
+                  {url: "./static/img/sx/hu.png", text: '老虎'},
+            ]
+    },
+     {
+                title: '性别图标',
+                list: [
+                      {url: "./static/img/gender/nanhai.png", text: '男孩'},
+                      {url: "./static/img/gender/nvhai.png", text: '女孩'},
+                ]
+        }
+]
+```
+
+
+### 下载定制图片
+request
+```javascript
+{
+        fontFamily: this.purchase.fontFamily,   // 字体
+        fontColor: this.purchase.fontColor,      // 字体颜色
+        backgroundImg: data.backgroundImg,       // 背景图片
+        params: d                               // 定制参数组合，结构与获取定制信息结构中params一致
+}
+```
+response
+```javascript
+这个接口不太清楚怎么整
+```
+
 
 
 ### 提交定制信息
